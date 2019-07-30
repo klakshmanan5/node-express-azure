@@ -2,9 +2,16 @@ trigger:
 - master
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'Ubuntu-latest'
 
 steps:
+
+# Run bash script
+- bash: |
+   find / -type f -name mvn 2>/dev/null
+   echo "====> TEMP ${TMPDIR} <======"
+  displayName: 'Test'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '8.x'
